@@ -32,7 +32,7 @@ function login() {
     const password = document.getElementById("password").value;
     const error = document.getElementById("error");
 
-    if (password === "028028") {
+    if (password === "loveyou") {
 
         document.getElementById("login").style.display = "none";
         document.getElementById("main").style.display = "flex";
