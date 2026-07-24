@@ -1,200 +1,251 @@
-setTimeout(()=>{
+// ==============================
+// For My Princess ❤️
+// Script by ChatGPT
+// ==============================
 
-loading.style.display="none";
+// Loading Screen
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+    }, 2000);
+});
 
-},2000);
+// Typing Effect
+const typingText = "Hai Nikmol ❤️";
+let typingIndex = 0;
 
-const text="Hai Nikmol ❤️";
+function typeWriter() {
+    const typing = document.getElementById("typing");
 
-let i=0;
+    if (!typing) return;
 
-function type(){
+    if (typingIndex < typingText.length) {
+        typing.innerHTML += typingText.charAt(typingIndex);
+        typingIndex++;
+        setTimeout(typeWriter, 120);
+    }
+}
 
-if(i<text.length){
+// Login
+function login() {
 
-typing.innerHTML+=text.charAt(i);
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
-i++;
+    if (password === "028028") {
 
-setTimeout(type,150);
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "flex";
+
+        // Musik
+        const music = document.getElementById("music");
+
+        if (music) {
+            music.play().catch(() => {});
+        }
+
+        typeWriter();
+
+        startHearts();
+
+    } else {
+
+        error.innerHTML = "Password salah 😢";
+
+    }
 
 }
 
-}
+// Surat
+function openLetter() {
 
-function login(){
-
-const pass=document.getElementById("password").value;
-
-if(pass==="028028"){
-
-login.style.display="none";
-
-main.style.display="flex";
-
-document.getElementById("music").play();
-
-type();
-
-heart();
-
-}else{
-
-error.innerHTML="Password Salah 😢";
+    document.getElementById("letter").style.display = "flex";
 
 }
 
-}
+function closeLetter() {
 
-function openLetter(){
-
-letter.style.display="flex";
+    document.getElementById("letter").style.display = "none";
 
 }
 
-function closeLetter(){
+// Floating Hearts
+function startHearts() {
 
-letter.style.display="none";
+    setInterval(() => {
 
-}
+        const heart = document.createElement("div");
 
-function heart(){
+        heart.innerHTML = "❤️";
 
-setInterval(()=>{
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        heart.style.pointerEvents = "none";
+        heart.style.zIndex = "999";
+        heart.style.animation = "love 6s linear";
 
-const h=document.createElement("div");
+        document.body.appendChild(heart);
 
-h.innerHTML="❤️";
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
 
-h.style.position="absolute";
-
-h.style.left=Math.random()*100+"vw";
-
-h.style.top="100vh";
-
-h.style.fontSize=Math.random()*30+20+"px";
-
-h.style.animation="love 6s linear";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{
-
-h.remove();
-
-},6000);
-
-},250);
+    }, 300);
 
 }
 
-const style=document.createElement("style");
+// Sakura
+function startSakura() {
 
-style.innerHTML=`
+    setInterval(() => {
+
+        const sakura = document.createElement("div");
+
+        sakura.innerHTML = "🌸";
+
+        sakura.style.position = "fixed";
+        sakura.style.left = Math.random() * 100 + "vw";
+        sakura.style.top = "-30px";
+        sakura.style.fontSize = (18 + Math.random() * 18) + "px";
+        sakura.style.pointerEvents = "none";
+        sakura.style.zIndex = "998";
+        sakura.style.animation = "sakura 8s linear";
+
+        document.body.appendChild(sakura);
+
+        setTimeout(() => {
+            sakura.remove();
+        }, 8000);
+
+    }, 500);
+
+}
+
+// Confetti
+function confetti() {
+
+    for (let i = 0; i < 120; i++) {
+
+        const c = document.createElement("div");
+
+        c.innerHTML = ["🎉", "✨", "💖"][Math.floor(Math.random() * 3)];
+
+        c.style.position = "fixed";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.top = "-20px";
+        c.style.fontSize = (20 + Math.random() * 15) + "px";
+        c.style.animation = "fall 4s linear";
+        c.style.pointerEvents = "none";
+        c.style.zIndex = "1000";
+
+        document.body.appendChild(c);
+
+        setTimeout(() => {
+            c.remove();
+        }, 4000);
+
+    }
+
+}
+
+// Setelah semua elemen HTML selesai dimuat
+document.addEventListener("DOMContentLoaded", () => {
+
+    startSakura();
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    let count = 0;
+
+    if (yesBtn) {
+
+        yesBtn.addEventListener("click", () => {
+
+            confetti();
+
+            setTimeout(() => {
+
+                alert("Terima kasih ya Nikmol ❤️\nSemoga kamu mau memaafkan aku.");
+
+            }, 300);
+
+        });
+
+    }
+
+    if (noBtn) {
+
+        noBtn.addEventListener("mouseover", () => {
+
+            count++;
+
+            noBtn.style.position = "fixed";
+            noBtn.style.left = Math.random() * 80 + "vw";
+            noBtn.style.top = Math.random() * 80 + "vh";
+
+            if (count >= 8) {
+
+                noBtn.innerHTML = "Ya deh ❤️";
+                noBtn.style.background = "#ff4d88";
+
+            }
+
+        });
+
+    }
+
+});
+
+// Animasi dibuat lewat JS agar tidak perlu file tambahan
+const style = document.createElement("style");
+
+style.innerHTML = `
 @keyframes love{
+
 0%{
 transform:translateY(0);
 opacity:1;
 }
+
 100%{
 transform:translateY(-120vh);
 opacity:0;
 }
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(0) rotate(0deg);
+}
+
+100%{
+transform:translateY(120vh) rotate(720deg);
+}
+
+}
+
+@keyframes sakura{
+
+0%{
+transform:translateY(0) translateX(0) rotate(0deg);
+opacity:1;
+}
+
+50%{
+transform:translateY(50vh) translateX(80px) rotate(180deg);
+}
+
+100%{
+transform:translateY(120vh) translateX(-60px) rotate(360deg);
+opacity:0;
+}
+
 }
 `;
 
 document.head.appendChild(style);
-
-const yes=document.getElementById("yesBtn");
-
-const no=document.getElementById("noBtn");
-
-let kabur=0;
-
-yes.onclick=()=>{
-
-alert("Makasih ya Nikmol ❤️");
-
-confetti();
-
-}
-
-no.onmouseover=()=>{
-
-kabur++;
-
-const x=Math.random()*70;
-
-const y=Math.random()*70;
-
-no.style.position="fixed";
-
-no.style.left=x+"vw";
-
-no.style.top=y+"vh";
-
-if(kabur>10){
-
-no.innerHTML="Iya deh ❤️";
-
-no.style.background="hotpink";
-
-}
-
-}
-
-function confetti(){
-
-for(let i=0;i<150;i++){
-
-const c=document.createElement("div");
-
-c.innerHTML="🎉";
-
-c.style.position="fixed";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.top="-20px";
-
-c.style.fontSize=Math.random()*20+20+"px";
-
-c.style.animation="fall 4s linear";
-
-document.body.appendChild(c);
-
-setTimeout(()=>{
-
-c.remove();
-
-},4000);
-
-}
-
-}
-
-setInterval(()=>{
-
-const s=document.createElement("div");
-
-s.innerHTML="🌸";
-
-s.style.position="fixed";
-
-s.style.left=Math.random()*100+"vw";
-
-s.style.top="-50px";
-
-s.style.fontSize=Math.random()*20+15+"px";
-
-s.style.animation="sakura 8s linear";
-
-document.body.appendChild(s);
-
-setTimeout(()=>{
-
-s.remove();
-
-},8000);
-
-},400);
