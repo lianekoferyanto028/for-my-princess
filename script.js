@@ -50,7 +50,7 @@ function login() {
 
     } else {
 
-        error.innerHTML = "Password salah 😢";
+        error.innerHTML = "Passwordnya salah ukhti 😢";
 
     }
 
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
 
-                alert("Terima kasih ya Nikmol ❤️\nSemoga kamu mau memaafkan aku.");
+                alert("Makasii ya cimoll ❤️\nSemoga aku dimaafin.");
 
             }, 300);
 
